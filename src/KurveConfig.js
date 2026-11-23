@@ -65,14 +65,53 @@ Kurve.Config = {
         fadeTimeOut: 60
     },
     
+    // Players with a name are activated automatically and get one of the PersonalColorPairs.
+    // The remaining colors go to the unnamed guest slots.
     Players: [
-        { id:'red',      keyLeft:49,   keyRight:81,   keySuperpower:65  },
-        { id:'orange',   keyLeft:37,   keyRight:40,   keySuperpower:39  },
-        { id:'green',    keyLeft:89,   keyRight:88,   keySuperpower:67  },
-        { id:'blue',     keyLeft:66,   keyRight:78,   keySuperpower:77  },
-        { id:'purple',   keyLeft:76,   keyRight:79,   keySuperpower:80  },
-        { id:'pink',     keyLeft:53,   keyRight:54,   keySuperpower:55  },
+        { name:'Moritz', keyLeft:49,   keyRight:81,   keySuperpower:65  },
+        { name:'Marle',  keyLeft:37,   keyRight:40,   keySuperpower:39  },
+        {                keyLeft:89,   keyRight:88,   keySuperpower:67  },
+        {                keyLeft:66,   keyRight:78,   keySuperpower:77  },
+        {                keyLeft:76,   keyRight:79,   keySuperpower:80  },
+        {                keyLeft:53,   keyRight:54,   keySuperpower:55  },
     ],
+
+    // Color combinations that contrast well in both themes. One is picked at random on every page load.
+    PersonalColorPairs: [
+        ['red', 'blue'],
+        ['orange', 'blue'],
+        ['orange', 'purple'],
+        ['green', 'pink'],
+        ['green', 'purple'],
+        ['pink', 'blue'],
+    ],
+
+    Messages: {
+        deathMatch: 'HASEN-DUELL!',
+        // {winner} and {loser} are replaced with player names. The loser is the player with the fewest points.
+        win: [
+            '{winner} gewinnt! {loser}, Kopf hoch, Hase. 🐰',
+            'Sorry Hase, {winner} war heute einfach schneller.',
+            '{loser} schuldet {winner} jetzt eine Massage.',
+            '{winner} ist offiziell Chef-Hase. Bis zur nächsten Runde.',
+            '{loser} macht heute den Abwasch. Das sind die Regeln.',
+            '{winner} gewinnt! {loser} behauptet natürlich, die Tastatur hat gehakt.',
+            'Hasenalarm! {winner} hat {loser} komplett eingemauert.',
+            '{winner} gewinnt. {loser} darf trotzdem weiter kuscheln. Gerade so.',
+            '{loser}, das war... mutig. 🥕',
+            '{winner} schnappt sich die letzte Möhre. 🥕',
+            '{winner} gewinnt! Dafür darf {loser} den nächsten Film aussuchen.',
+            'Und der goldene Möhren-Pokal geht an... {winner}! 🏆',
+            '{loser} ist gegen die Wand gefahren. Wieder mal.',
+            '{winner}: 1, {loser}: 0, Ausreden: unendlich.',
+            '{winner} gewinnt! {loser} hat natürlich absichtlich verloren. Aus Liebe.',
+            '{winner} war schneller als jeder Hase. {loser} eher so Igel. 🦔',
+            '{loser} kocht heute. {winner} hat gesprochen.',
+            'Ein Hase hat gewonnen. Der andere Hase schmollt jetzt. 🐰',
+            '{winner} gewinnt! Siegerkuss bitte sofort einlösen. 💋',
+            'Revanche? {loser} besteht darauf.',
+        ],
+    },
 
     Theming: {
         default: {

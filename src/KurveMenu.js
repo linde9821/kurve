@@ -32,6 +32,7 @@ Kurve.Menu = {
     
     init: function() {
         this.initPlayerMenu();
+        this.activateNamedPlayers();
         this.addWindowListeners();
         this.addMouseListeners();
         this.initMenuMusic();
@@ -47,6 +48,12 @@ Kurve.Menu = {
         document.getElementById('menu-players-list').innerHTML += playerHTML;
     },
     
+    activateNamedPlayers: function() {
+        Kurve.players.forEach(function(player) {
+            if ( player.hasName() ) Kurve.Menu.activatePlayer(player.getId());
+        });
+    },
+
     addWindowListeners: function() {
         this.boundOnKeyDown = this.onKeyDown.bind(this);
         window.addEventListener('keydown', this.boundOnKeyDown, false);

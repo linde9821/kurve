@@ -100,7 +100,7 @@ Kurve.Superpowerconfig.hooks = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.RUN_FASTER] = {
-    label: 'run faster',
+    label: 'Möhren-Turbo',
 
     hooks: [Kurve.Superpowerconfig.hooks.DRAW_NEXT_FRAME],
 
@@ -146,7 +146,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.RUN_FASTER] = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.RUN_SLOWER] = {
-    label: 'run slower',
+    label: 'Mümmel-Modus',
 
     hooks: [Kurve.Superpowerconfig.hooks.DRAW_NEXT_FRAME],
 
@@ -194,7 +194,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.RUN_SLOWER] = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.JUMP] = {
-    label: 'jump',
+    label: 'Hasensprung',
 
     hooks: [Kurve.Superpowerconfig.hooks.DRAW_NEXT_FRAME],
 
@@ -237,7 +237,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.JUMP] = {
  };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.INVISIBLE] = {
-    label: 'invisible',
+    label: 'Ab in den Bau',
 
     hooks: [
         Kurve.Superpowerconfig.hooks.DRAW_LINE,
@@ -292,7 +292,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.INVISIBLE] = {
  };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.VERTICAL_BAR] = {
-    label: 'vertical bar',
+    label: 'Gartenzaun',
 
     hooks: [
         Kurve.Superpowerconfig.hooks.DRAW_NEXT_FRAME
@@ -338,7 +338,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.VERTICAL_BAR] = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.CROSS_WALLS] = {
-    label: 'cross walls',
+    label: 'Tunnelgräber',
 
     hooks: [
         Kurve.Superpowerconfig.hooks.IS_COLLIDED
@@ -438,7 +438,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.CROSS_WALLS] = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.DARK_KNIGHT] = {
-    label: 'dark knight',
+    label: 'Licht aus!',
 
     hooks: [
         Kurve.Superpowerconfig.hooks.DRAW_NEXT_FRAME
@@ -488,7 +488,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.DARK_KNIGHT] = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.HYDRA] = {
-    label: 'hydra',
+    label: 'Karnickel-Klon',
 
     hooks: [
         Kurve.Superpowerconfig.hooks.DRAW_NEXT_FRAME
@@ -550,7 +550,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.HYDRA] = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.REVERSE] = {
-    label: 'reverse',
+    label: 'Hase & Igel',
     hooks: [Kurve.Superpowerconfig.hooks.DRAW_NEXT_FRAME],
 
     audios: [
@@ -605,7 +605,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.REVERSE] = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.SQUARE_HEAD] = {
-    label: 'square head',
+    label: 'Haken schlagen',
     hooks: [Kurve.Superpowerconfig.hooks.DRAW_NEXT_FRAME],
 
     audios: [
@@ -675,7 +675,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.SQUARE_HEAD] = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.CHUCK_NORRIS] = {
-    label: 'chuck norris',
+    label: 'Tarnhase',
     hooks: [Kurve.Superpowerconfig.hooks.POWER_UP],
     helpers: {
         initCalled: false,
@@ -712,7 +712,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.CHUCK_NORRIS] = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.NO_SUPERPOWER] = {
-    label: 'no superpower',
+    label: 'Hase ohne Plan',
     hooks: [Kurve.Superpowerconfig.hooks.POWER_UP],
     audios: [],
     helpers: {},
@@ -726,7 +726,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.NO_SUPERPOWER] = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.SHOOT_HOLES] = {
-    label: 'shoot holes',
+    label: 'Möhrenkanone',
     hooks: [Kurve.Superpowerconfig.hooks.DRAW_NEXT_FRAME],
     audios: [
         {
@@ -757,7 +757,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.SHOOT_HOLES] = {
 };
 
 Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.RANDOM] = {
-    label: 'random',
+    label: 'Wundertüte',
     hooks: [],
     audios: [],
     helpers: {},

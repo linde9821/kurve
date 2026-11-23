@@ -45,12 +45,31 @@ var Kurve = {
     },
         
     initPlayers: function() {
-        Kurve.Config.Players.forEach(function(player) {
-            var player = new Kurve.Player(player.id, player.keyLeft, player.keyRight, player.keySuperpower);
+        var colorIds = this.getShuffledColorIds();
+
+        Kurve.Config.Players.forEach(function(playerConfig, index) {
+            var player = new Kurve.Player(colorIds[index], playerConfig.keyLeft, playerConfig.keyRight, playerConfig.keySuperpower, playerConfig.name);
 
             Kurve.players.push(player);
             Kurve.playersById[player.getId()] = player;
         });
+    },
+
+    /**
+     * Returns one color id per player slot: a random pair from PersonalColorPairs (in random order)
+     * for the named players, followed by the remaining colors for the guests.
+     */
+    getShuffledColorIds: function() {
+        var pairs = Kurve.Config.PersonalColorPairs;
+        var pair = pairs[Math.floor(Math.random() * pairs.length)].slice();
+
+        if ( Math.random() < 0.5 ) pair.reverse();
+
+        var remaining = Object.keys(Kurve.Config.Theming.default.players).filter(function(colorId) {
+            return pair.indexOf(colorId) === -1;
+        });
+
+        return pair.concat(remaining);
     },
 
     getPlayer: function(playerId) {

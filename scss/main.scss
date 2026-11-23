@@ -177,6 +177,21 @@ p {
 #menu-intro {
     padding: 10px;
     margin-bottom: 20px;
+
+    h1 {
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-top: 8px;
+        font-size: 14px;
+        opacity: 0.7;
+    }
+}
+
+#lightbox-content .win-message {
+    font-size: 22px;
+    margin-bottom: 25px;
 }
 
 #menu-players {

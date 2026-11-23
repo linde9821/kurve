@@ -273,7 +273,7 @@ Kurve.Game = {
     initDeathMatch: function(winners) {
         this.deathMatch = true;
         this.Audio.initDeathMatch();
-        Kurve.Lightbox.show('<div class="deathmatch"><h1>DEATHMATCH!</h1></div>');
+        Kurve.Lightbox.show('<div class="deathmatch"><h1>' + Kurve.Config.Messages.deathMatch + '</h1></div>');
 
         var winnerCurves = [];
         this.curves.forEach(function(curve) {
@@ -302,9 +302,22 @@ Kurve.Game = {
         Kurve.Piwik.trackPageView('GameOver');
 
         Kurve.Lightbox.show(
-            '<h1 class="active ' + winner.getId() + '">' + winner.getId() + ' wins!</h1>' +
-            '<a href="#" onclick="Kurve.reload(); return false;" title="Go back to the menu"  class="button">Start new game</a>'
+            '<h1 class="active ' + winner.getId() + '">' + winner.getName() + ' gewinnt!</h1>' +
+            '<p class="win-message">' + this.getWinMessage(winner) + '</p>' +
+            '<a href="#" onclick="Kurve.reload(); return false;" title="Go back to the menu"  class="button">Revanche!</a>'
         );
+    },
+
+    getWinMessage: function(winner) {
+        var messages = Kurve.Config.Messages.win;
+        var losers = this.players.filter(function(player) { return player !== winner; });
+        var loser = losers.reduce(function(lowest, player) {
+            return player.getPoints() < lowest.getPoints() ? player : lowest;
+        }, losers[0]);
+
+        return messages[Math.floor(Math.random() * messages.length)]
+            .replace(/\{winner\}/g, winner.getName())
+            .replace(/\{loser\}/g, loser.getName());
     },
 
     Audio: {

@@ -24,7 +24,7 @@
 
 'use strict';
 
-Kurve.Player = function(id, keyLeft, keyRight, keySuperpower) {
+Kurve.Player = function(id, keyLeft, keyRight, keySuperpower, name) {
 
     var points = 0;
     var superpower = Kurve.Factory.getSuperpower(Kurve.Superpowerconfig.types.RANDOM);
@@ -40,6 +40,8 @@ Kurve.Player = function(id, keyLeft, keyRight, keySuperpower) {
     
     this.getPoints = function() { return points; };
     this.getId = function() { return id; };
+    this.getName = function() { return name || id; };
+    this.hasName = function() { return !!name; };
     this.getColor = function() { return color === null ? Kurve.Theming.getThemedValue('players', id) : color };
     this.getSuperpower = function() { return superpower; };
     this.getKeyLeft = function() { return keyLeft; };
@@ -51,7 +53,7 @@ Kurve.Player = function(id, keyLeft, keyRight, keySuperpower) {
 
 Kurve.Player.prototype.renderMenuItem = function() {
     return  '<div id="' + this.getId() + '" class="player inactive ' + this.getId() +'">' +
-                '<div class="title light"><h2>' + this.getId() + '</h2></div>' +
+                '<div class="title light"><h2>' + this.getName() + '</h2></div>' +
                 '<div class="key left light"><div>' + this.getKeyLeftChar() + '</div></div>' +
                 '<div class="key right light"><div>' + this.getKeyRightChar() + '</div></div>' +
                 '<div class="superpower">' +
@@ -68,7 +70,7 @@ Kurve.Player.prototype.renderMenuItem = function() {
 
 Kurve.Player.prototype.renderScoreItem = function() {
     return  '<div class="active ' + this.getId() + '">' +
-                '<div class="title"><h2>' + this.getId() + '</h2></div>' +
+                '<div class="title"><h2>' + this.getName() + '</h2></div>' +
                 '<div class="points">' + this.getPoints() + '</div>' +
                 '<div class="clear"></div>' +
                 '<div class="superpowers">' +
