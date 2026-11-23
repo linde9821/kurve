@@ -27,23 +27,12 @@
 Kurve.Player = function(id, keyLeft, keyRight, keySuperpower) {
 
     var points = 0;
-    var superpower = Kurve.Factory.getSuperpower(Kurve.Superpowerconfig.types.NO_SUPERPOWER);
-    var superPowerElement = null;
+    var superpower = Kurve.Factory.getSuperpower(Kurve.Superpowerconfig.types.RANDOM);
     var isActive = false;
     var color = null;
     
     this.incrementPoints = function() {
         points++;
-    };
-
-    this.setSuperpower = function(newSuperpower) {
-        superpower = newSuperpower;
-
-        if ( superPowerElement === null ) {
-            superPowerElement = document.getElementById(this.getId() + '-superpower');
-        }
-
-        superPowerElement.innerHTML = this.getSuperpower().getLabel();
     };
 
     this.setColor = function(newColor) { color = newColor; };
@@ -68,11 +57,9 @@ Kurve.Player.prototype.renderMenuItem = function() {
                 '<div class="superpower">' +
                     '<div class="key light">' + this.getKeySuperpowerChar() + '</div>' +
                     '<div class="superpowerType light">' +
-                        '<div class="left" onclick="Kurve.Menu.onPreviousSuperPowerClicked(event, \'' + this.getId() + '\')"><i class="arrow arrow-left"></i></div>' +
                         '<div class="superpowers">' +
                             '<div id="' + this.getId() + '-superpower">' + this.getSuperpower().getLabel() + '</div>' +
                         '</div> ' +
-                        '<div class="right" onclick="Kurve.Menu.onNextSuperPowerClicked(event, \'' + this.getId() + '\')"><i class="arrow arrow-right"></i></div>' +
                     '</div> ' +
                 '</div>' +
                 '<div class="clear"></div>' +

@@ -94,9 +94,6 @@ Kurve.Menu = {
             } else if ( player.isKeyRight(event.keyCode) ) {
                 Kurve.Menu.deactivatePlayer(player.getId());
                 Kurve.Menu.audioPlayer.play('menu-navigate');
-            } else if ( player.isKeySuperpower(event.keyCode) ) {
-                Kurve.Menu.nextSuperpower(player.getId());
-                Kurve.Menu.audioPlayer.play('menu-navigate');
             }
         });
     },
@@ -129,60 +126,6 @@ Kurve.Menu = {
 
         u.addClass('hidden', 'layer-menu');
         u.removeClass('hidden', 'layer-game');
-    },
-
-    onNextSuperPowerClicked: function(event, playerId) {
-        event.stopPropagation();
-        Kurve.Menu.audioPlayer.play('menu-navigate');
-        Kurve.Menu.nextSuperpower(playerId);
-    },
-
-    onPreviousSuperPowerClicked: function(event, playerId) {
-        event.stopPropagation();
-        Kurve.Menu.audioPlayer.play('menu-navigate');
-        Kurve.Menu.previousSuperpower(playerId);
-    },
-
-    nextSuperpower: function(playerId) {
-        var player = Kurve.getPlayer(playerId);
-        var count = 0;
-        var superpowerType = '';
-
-        for (var i in Kurve.Superpowerconfig.types) {
-            count++;
-            if ( !(Kurve.Superpowerconfig.types[i] === player.getSuperpower().getType() ) ) continue;
-
-            if ( Object.keys(Kurve.Superpowerconfig.types).length === count) {
-                superpowerType = Object.keys(Kurve.Superpowerconfig.types)[0];
-            } else {
-                superpowerType = Object.keys(Kurve.Superpowerconfig.types)[count];
-            }
-
-            break;
-        }
-
-        player.setSuperpower( Kurve.Factory.getSuperpower(superpowerType) );
-    },
-
-    previousSuperpower: function(playerId) {
-        var player = Kurve.getPlayer(playerId);
-        var count = 0;
-        var superpowerType = '';
-
-        for (var i in Kurve.Superpowerconfig.types) {
-            count++;
-            if ( !(Kurve.Superpowerconfig.types[i] === player.getSuperpower().getType() ) ) continue;
-
-            if ( 1 === count) {
-                superpowerType = Object.keys(Kurve.Superpowerconfig.types)[Object.keys(Kurve.Superpowerconfig.types).length - 1];
-            } else {
-                superpowerType = Object.keys(Kurve.Superpowerconfig.types)[count - 2];
-            }
-
-            break;
-        }
-
-        player.setSuperpower( Kurve.Factory.getSuperpower(superpowerType) );
     },
 
     activatePlayer: function(playerId) {

@@ -257,34 +257,6 @@ p {
             float: left;
             font-size: 18px;
         }
-
-        .left {
-            position: absolute;
-            padding: 10px;
-            top: 0;
-            left: 10px;
-
-            .arrow-left {
-                width: 16px;
-                height: 16px;
-                position: relative;
-                top: 8px;
-            }
-        }
-
-        .right {
-            position: absolute;
-            padding: 10px;
-            top: 0;
-            right: 10px;
-
-            .arrow-right {
-                width: 16px;
-                height: 16px;
-                position: relative;
-                top: 8px;
-            }
-        }
     }
 
     .superpowers {
@@ -528,33 +500,12 @@ p {
     100% { color: #FFF; background: #3F3E37; }
 }
 
-i.arrow {
-    border: solid #969696;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-}
-
-i.arrow-right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-}
-
-i.arrow-left {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-}
-
 body.dark-theme {
     color: #DDD;
     background-color: #222;
 
     a {
         color: #DDD;
-    }
-
-    i.arrow {
-        border-color: #DDD;
     }
 
     .superpowerCircle {
