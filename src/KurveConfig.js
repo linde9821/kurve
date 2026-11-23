@@ -56,6 +56,8 @@ Kurve.Config = {
 
     Superpower: {
         maxSuperpowers: 6,
+        // How strongly the random superpower favours trailing players (0 = no catch-up, 1 = maximum).
+        catchUpStrength: 0.8,
     },
 
     Sound: {

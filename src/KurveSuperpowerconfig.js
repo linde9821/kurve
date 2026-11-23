@@ -43,6 +43,55 @@ Kurve.Superpowerconfig.types = {
     RANDOM: 'RANDOM',
 };
 
+/**
+ * Strength tiers used by the RANDOM superpower. Every type except RANDOM should be listed exactly once.
+ */
+Kurve.Superpowerconfig.tiers = {
+    STRONG: ['INVISIBLE', 'CROSS_WALLS', 'REVERSE', 'RUN_FASTER', 'JUMP'],
+    MEDIUM: ['SHOOT_HOLES', 'VERTICAL_BAR', 'DARK_KNIGHT', 'RUN_SLOWER'],
+    WEAK:   ['HYDRA', 'SQUARE_HEAD', 'CHUCK_NORRIS', 'NO_SUPERPOWER'],
+};
+
+/**
+ * Picks a superpower type for the given curve's player. A tier is drawn first, weighted by the
+ * player's standing: trailing players are more likely to get a strong tier, leaders a weak one.
+ * Then a type is drawn uniformly from that tier.
+ */
+Kurve.Superpowerconfig.getRandomType = function(curve) {
+    var tiers = Kurve.Superpowerconfig.tiers;
+    var points = curve.getGame().curves.map(function(c) { return c.getPlayer().getPoints(); });
+    var maxPoints = Math.max.apply(null, points);
+    var minPoints = Math.min.apply(null, points);
+
+    // standing: -1 for the leader, 1 for the last player, 0 if everyone is tied
+    var standing = 0;
+    if ( maxPoints > minPoints ) {
+        var midPoints = (maxPoints + minPoints) / 2;
+        standing = (midPoints - curve.getPlayer().getPoints()) / ((maxPoints - minPoints) / 2);
+    }
+
+    var catchUp = Kurve.Config.Superpower.catchUpStrength * standing;
+    var weightedTiers = [
+        { types: tiers.STRONG, weight: 1 + catchUp },
+        { types: tiers.MEDIUM, weight: 1 },
+        { types: tiers.WEAK,   weight: 1 - catchUp },
+    ];
+
+    var totalWeight = weightedTiers.reduce(function(sum, tier) { return sum + tier.weight; }, 0);
+    var roll = Math.random() * totalWeight;
+    var chosenTier = weightedTiers[weightedTiers.length - 1];
+
+    for (var i = 0; i < weightedTiers.length; i++) {
+        roll -= weightedTiers[i].weight;
+        if ( roll < 0 ) {
+            chosenTier = weightedTiers[i];
+            break;
+        }
+    }
+
+    return Kurve.Superpowerconfig.types[chosenTier.types[Math.floor(Math.random() * chosenTier.types.length)]];
+};
+
 Kurve.Superpowerconfig.hooks = {
     DRAW_NEXT_FRAME: 'DRAW_NEXT_FRAME',
     DRAW_LINE: 'DRAW_LINE',
@@ -713,8 +762,7 @@ Kurve.Superpowerconfig[Kurve.Superpowerconfig.types.RANDOM] = {
     audios: [],
     helpers: {},
     init: function(curve) {
-        var superpowerTypes = Object.values(Kurve.Superpowerconfig.types).filter(type => type !== Kurve.Superpowerconfig.types.RANDOM);
-        var randomSuperpowerType = superpowerTypes[Math.floor(Math.random() * superpowerTypes.length)];
+        var randomSuperpowerType = Kurve.Superpowerconfig.getRandomType(curve);
         var randomSuperpower = Kurve.Factory.getSuperpower(randomSuperpowerType);
 
         this.label = randomSuperpower.label;
